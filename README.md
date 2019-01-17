@@ -2,4 +2,4 @@
 
 Main function is FootballResult.R
 
-**WARNING**: Aware of working directory when use these files
+**WARNING**: Be aware of the working directory when using these files
