@@ -8,41 +8,39 @@ CairoFonts(
 )
 
 Hometeam = 'Liverpool'
-Awayteam = 'Napoli'
+Awayteam = 'Bayern Munich'
 
-CairoPDF(file = paste("CL/Champions League ", "Group C game 6 ",
+CairoPDF(file = paste("CL/Champions League Round of 16 1st leg ",
                       Hometeam, " vs ", Awayteam, 
                       ".pdf", sep=""),
          width = 10, height = 8)
 
 Football_result(
-    matchtype = paste("2018/19 CHAMPIONS LEAGUE", "Group C game 6", sep=" "),
+    matchtype = paste("2018/19 CHAMPIONS LEAGUE", "Round of 16 1st leg", sep=" "),
     Hometeam = Hometeam, Awayteam = Awayteam,
     Home = "4-3-3",
     HomeColour = "red", Home2Colour = "red", 
     HomeGKColour = c("#FFFF00"), 
     HomeLineup = c(
         "Alisson",
-        "Alexander-Arnold","Matip","Van Dijk","Robertson",
-        "Wijnaldum","Henderson","Milner",
+        "Alexander-Arnold","Matip","Fabinho","Robertson",
+        "Wijnaldum","Henderson","Keita",
         "Salah","Roberto Firmino","Mané"
     )
     ,
-    HomeSub = c("Lovren 90'",22, "Fabinho 85'",82, "Keita 79'", 102),
+    HomeSub = c("Milner 76'", 82, "Origi 76'", 102),
    
     Away = "4-3-3",
-    AwayColour = c("#00BFFF"), Away2Colour = "white",
-    AwayGKColour = "#00CD00", 
+    AwayColour = c("#E0EEEE"), Away2Colour = c("#E0EEEE"),
+    AwayGKColour = c("#FF8C00"),
     AwayLineup = c(
-        "Ospina",
-        "Mário Rui","Koulibaly","Raul Albiol","Maksimovic",
-        "Faián Ruiz","Hamsik","Allan",
-        "Insigne","Mertens","Callejon"
+        "Neuer",
+        "Alaba", "Hummels", "Süle", "Kimmich",
+        "Rodríguez", "Javi Martínez", "Thiago Alcántara",
+        "Coman", "Lewandowski", "Gnabry"
     )
     ,
-    AwaySub = c("Ghoulam 70'",22, "Zielinski 62'",62, "Milik 67'", 102),
-    
-    Homescorer = c(9)
+    AwaySub = c("Ferreira de Soza 91'", 112, "Renato Sanches 88'", 62, "Ribéry 81'", 92)
 )
 
 dev.off()
