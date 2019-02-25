@@ -135,7 +135,7 @@ Football_result <- function(matchtype=NULL,
         Away.x <- c(97,85,85,85,85,79,72,72,66,59,59)
         Away.y <- c(34,10,26,42,58,34,10,58,34,22,46)
     }
-    
+    ## plot points
     points(x = Away.x[1], y = Away.y[1], 
            pch = 21, bg = AwayGKColour, col = "gray20", cex = 3.7, lwd = 2)
     points(x = Away.x[-1], y = Away.y[-1], 
@@ -146,17 +146,29 @@ Football_result <- function(matchtype=NULL,
          cex = 0.8)
     text(AwayLineup, x= Away.x, y= Away.y - 5, 
          cex = 0.8)
+    
     ## player names of substitution
     if(!is.null(HomeSub)){
         if(length(HomeSub) %% 2 != 0){
             stop("Substitution Information for HomeTeam is not correct")
         }
-        HomeSub.name = HomeSub[seq(1,length(HomeSub), 2)]
-        HomeSub.loc = HomeSub[seq(2, length(HomeSub), 2)]
-        HomeSub.loc = (as.numeric(HomeSub.loc)-2)/10
-        HomeSub.x = Home.x[as.numeric(HomeSub.loc)]
-        HomeSub.y = Home.y[as.numeric(HomeSub.loc)]
-        
+        HomeSub.name <- HomeSub[seq(1,length(HomeSub), 2)]
+        HomeSub.loc <- HomeSub[seq(2, length(HomeSub), 2)]
+        HomeSub.loc <- as.numeric(HomeSub.loc)
+        HomeSub.y <- NA
+        for(i in 1:length(HomeSub.loc)){
+            if(HomeSub.loc[i] >= 100 & substr(HomeSub.loc[i],
+                                              nchar(HomeSub.loc[i])-1,
+                                              nchar(HomeSub.loc[i])) == '22'){
+                HomeSub.loc[i] <- (HomeSub.loc[i]-22)/100
+                HomeSub.y[i] <- Home.y[HomeSub.loc[i]] - 3
+            }else{
+                HomeSub.loc[i] <- (HomeSub.loc[i]-2)/10
+                HomeSub.y[i] <- Home.y[HomeSub.loc[i]]
+            }
+        }
+        HomeSub.x <- Home.x[HomeSub.loc]
+        ### paste names
         text(paste("(", HomeSub.name, ")", sep=""), 
              x = HomeSub.x, y = HomeSub.y - 8, cex = 0.8)
     }
@@ -164,12 +176,23 @@ Football_result <- function(matchtype=NULL,
         if(length(AwaySub) %% 2 != 0){
             stop("Substitution Information for Awayteam is not correct")
         }
-        AwaySub.name = AwaySub[seq(1,length(AwaySub), 2)]
-        AwaySub.loc = AwaySub[seq(2, length(AwaySub), 2)]
-        AwaySub.loc = (as.numeric(AwaySub.loc)-2)/10
-        AwaySub.x = Away.x[as.numeric(AwaySub.loc)]
-        AwaySub.y = Away.y[as.numeric(AwaySub.loc)]
-        
+        AwaySub.name <- AwaySub[seq(1,length(AwaySub), 2)]
+        AwaySub.loc <- AwaySub[seq(2, length(AwaySub), 2)]
+        AwaySub.loc <- as.numeric(AwaySub.loc)
+        AwaySub.y <- NA
+        for(i in 1:length(AwaySub.loc)){
+            if(AwaySub.loc[i] >= 100 & substr(AwaySub.loc[i],
+                                              nchar(AwaySub.loc[i])-1,
+                                              nchar(AwaySub.loc[i])) == '22'){
+                AwaySub.loc[i] <- (AwaySub.loc[i]-22)/100
+                AwaySub.y[i] <- Away.y[AwaySub.loc[i]] - 3
+            }else{
+                AwaySub.loc[i] <- (AwaySub.loc[i]-2)/10
+                AwaySub.y[i] <- Away.y[AwaySub.loc[i]]
+            }
+        }
+        AwaySub.x <- Away.x[AwaySub.loc]
+        ## paste names
         text(paste("(", AwaySub.name, ")", sep=""), 
              x = AwaySub.x, y = AwaySub.y - 8, cex = 0.8)
     }
@@ -179,6 +202,7 @@ Football_result <- function(matchtype=NULL,
     blackBall <- readPNG("/Users/youngbin/Desktop/R/Liverpool_201819/ball-icon-png-4636.png")
     redBall <- readPNG("/Users/youngbin/Desktop/R/Liverpool_201819/owngoal.png")
     
+    ## Home Scorer indexing
     if(!is.null(Homescorer)){
         Homescorer1 = unique(Homescorer[Homescorer > 0])
         H1 <- data.frame(table(Homescorer[Homescorer %in% Homescorer1]))
@@ -200,7 +224,8 @@ Football_result <- function(matchtype=NULL,
     }else{
         HG <- data.frame()
     }
-
+    
+    ## Away scorer indexing
     if(!is.null(Awayscorer)){
         Awayscorer1 = unique(Awayscorer[Awayscorer > 0])
         A1 <- data.frame(table(Awayscorer[Awayscorer %in% Awayscorer1]))
@@ -222,9 +247,9 @@ Football_result <- function(matchtype=NULL,
     }else{
         AG <- data.frame()
     }
-
+    ## Create scorer table
     scorertable <- list(HG, AG)
-    
+    ## input Goal image to the Home scorers
     if(nrow(scorertable[[1]]) > 0){
         for(i in 1:nrow(scorertable[[1]])){
             # get scorer's location
@@ -305,7 +330,7 @@ Football_result <- function(matchtype=NULL,
             }
         }
     }
-
+    ## input Goal image to the Away scorers
     if(nrow(scorertable[[2]]) > 0){
         for(i in 1:nrow(scorertable[[2]])){
             # get scorer's location
@@ -387,6 +412,7 @@ Football_result <- function(matchtype=NULL,
         }
     }
 
+    ## Add the game result
     Homescore = if(nrow(scorertable[[1]])==0){
         0
     }else{
