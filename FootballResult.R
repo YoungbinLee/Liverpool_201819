@@ -208,13 +208,13 @@ Football_result <- function(matchtype=NULL,
         H1 <- data.frame(table(Homescorer[Homescorer %in% Homescorer1]))
         Homescorer2 = unique(Homescorer[Homescorer < 0])
         H2 <- data.frame(table(Homescorer[Homescorer %in% Homescorer2])) 
-        H2$Var1 <- abs(as.numeric(as.character(H2$Var1)))
+        H2$Var1 <- as.character(abs(as.numeric(as.character(H2$Var1))))
         if(nrow(H1)==0){
-            H1 <- data.frame(matrix(ncol=2,nrow=0))
+            H1 <- data.frame(matrix(ncol=2,nrow=0), stringsAsFactors = FALSE)
             colnames(H1) <- c("Var1","Goal")
         }
         if(nrow(H2)==0){
-            H2 <- data.frame(matrix(ncol=2,nrow=0))
+            H2 <- data.frame(matrix(ncol=2,nrow=0), stringsAsFactors = FALSE)
             colnames(H2) <- c("Var1","OG")
         }
         HG <- merge(H1, H2, by = "Var1", all = TRUE)
@@ -231,13 +231,13 @@ Football_result <- function(matchtype=NULL,
         A1 <- data.frame(table(Awayscorer[Awayscorer %in% Awayscorer1]))
         Awayscorer2 = unique(Awayscorer[Awayscorer < 0])
         A2 <- data.frame(table(Awayscorer[Awayscorer %in% Awayscorer2])) 
-        A2$Var1 <- abs(as.numeric(as.character(A2$Var1)))
+        A2$Var1 <- as.character(abs(as.numeric(as.character(A2$Var1))))
         if(nrow(A1)==0){
-            A1 <- data.frame(matrix(ncol=2,nrow=0))
+            A1 <- data.frame(matrix(ncol=2,nrow=0), stringsAsFactors = FALSE)
             colnames(A1) <- c("Var1","Goal")
         }
         if(nrow(A2)==0){
-            A2 <- data.frame(matrix(ncol=2,nrow=0))
+            A2 <- data.frame(matrix(ncol=2,nrow=0), stringsAsFactors = FALSE)
             colnames(A2) <- c("Var1","OG")
         }
         AG <- merge(A1, A2, by = "Var1", all=TRUE)
@@ -260,7 +260,7 @@ Football_result <- function(matchtype=NULL,
                     for(j in 1:scorertable[[1]][i,]$Goal){
                         Ball <- blackBall
                         scorer.name <- HomeLineup[idx]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Home.x[idx] + ball.position + 1*(j-1), 
                                     Home.y[idx] - 6,
@@ -271,7 +271,7 @@ Football_result <- function(matchtype=NULL,
                         for(k in 1:scorertable[[1]][i,]$OG){
                             Ball <- redBall
                             scorer.name <- HomeLineup[idx]
-                            ball.position <- nchar(scorer.name)*0.45 + 1
+                            ball.position <- nchar(scorer.name)*0.4 + 1
                             rasterImage(Ball, 
                                         Home.x[idx] + ball.position + 1*(j+k-1), 
                                         Home.y[idx] - 6,
@@ -283,7 +283,7 @@ Football_result <- function(matchtype=NULL,
                     for(k in 1:scorertable[[1]][i,]$OG){
                         Ball <- redBall
                         scorer.name <- HomeLineup[idx]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Home.x[idx] + ball.position + 1*(k-1), 
                                     Home.y[idx] - 6,
@@ -296,7 +296,7 @@ Football_result <- function(matchtype=NULL,
                     for(j in 1:scorertable[[1]][i,]$Goal){
                         Ball <- blackBall
                         scorer.name <- HomeSub[which(HomeSub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Home.x[(idx-2)/10] + ball.position + 1*(j-1), 
                                     Home.y[(idx-2)/10] - 9,
@@ -307,7 +307,7 @@ Football_result <- function(matchtype=NULL,
                         for(k in 1:scorertable[[1]][i,]$OG){
                             Ball <- redball
                             scorer.name <- HomeSub[which(HomeSub == idx)-1]
-                            ball.position <- nchar(scorer.name)*0.45 + 1
+                            ball.position <- nchar(scorer.name)*0.4 + 1
                             rasterImage(Ball, 
                                         Home.x[(idx-2)/10] + ball.position + 1*(j+k-1), 
                                         Home.y[(idx-2)/10] - 9,
@@ -319,7 +319,7 @@ Football_result <- function(matchtype=NULL,
                     for(k in 1:scorertable[[1]][i,]$OG){
                         Ball <- redBall
                         scorer.name <- HomeSub[which(HomeSub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Home.x[idx] + ball.position + 1*(k-1), 
                                     Home.y[idx] - 9,
@@ -341,7 +341,7 @@ Football_result <- function(matchtype=NULL,
                     for(j in 1:scorertable[[2]][i,]$Goal){
                         Ball <- blackBall
                         scorer.name <- AwayLineup[idx]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Away.x[idx] + ball.position + 1*(j-1), 
                                     Away.y[idx] - 6,
@@ -352,7 +352,7 @@ Football_result <- function(matchtype=NULL,
                         for(k in 1:scorertable[[2]][i,]$OG){
                             Ball <- redBall
                             scorer.name <- AwayLineup[idx]
-                            ball.position <- nchar(scorer.name)*0.45 + 1
+                            ball.position <- nchar(scorer.name)*0.4 + 1
                             rasterImage(Ball, 
                                         Away.x[idx] + ball.position + 1*(j+k-1), 
                                         Away.y[idx] - 6,
@@ -364,7 +364,7 @@ Football_result <- function(matchtype=NULL,
                     for(k in 1:scorertable[[2]][i,]$OG){
                         Ball <- redBall
                         scorer.name <- AwayLineup[idx]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Away.x[idx] + ball.position + 1*(k-1), 
                                     Away.y[idx] - 6,
@@ -377,7 +377,7 @@ Football_result <- function(matchtype=NULL,
                     for(j in 1:scorertable[[2]][i,]$Goal){
                         Ball <- blackBall
                         scorer.name <- AwaySub[which(AwaySub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Away.x[(idx-2)/10] + ball.position + 1*(j-1), 
                                     Away.y[(idx-2)/10] - 9,
@@ -388,7 +388,7 @@ Football_result <- function(matchtype=NULL,
                         for(k in 1:scorertable[[2]][i,]$OG){
                             Ball <- redBall
                             scorer.name <- AwaySub[which(AwaySub == idx)-1]
-                            ball.position <- nchar(scorer.name)*0.45 + 1
+                            ball.position <- nchar(scorer.name)*0.4 + 1
                             rasterImage(Ball, 
                                         Away.x[(idx-2)/10] + ball.position + 1*(j+k-1), 
                                         Away.y[(idx-2)/10] - 9,
@@ -400,7 +400,7 @@ Football_result <- function(matchtype=NULL,
                     for(k in 1:scorertable[[2]][i,]$OG){
                         Ball <- redBall
                         scorer.name <- AwaySub[which(AwaySub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.45 + 1
+                        ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
                                     Away.x[idx] + ball.position + 1*(k-1), 
                                     Away.y[idx] - 9,
@@ -413,16 +413,8 @@ Football_result <- function(matchtype=NULL,
     }
 
     ## Add the game result
-    Homescore = if(nrow(scorertable[[1]])==0){
-        0
-    }else{
-        length(Homescorer[Homescorer >0]) + length(Awayscorer[Awayscorer <0])
-    }
-    Awayscore = if(nrow(scorertable[[2]])==0){
-        0
-    }else{
-        length(Awayscorer[Awayscorer >0]) + length(Homescorer[Homescorer <0])
-    }
+    Homescore = length(Homescorer[Homescorer >0]) + length(Awayscorer[Awayscorer <0])
+    Awayscore = length(Awayscorer[Awayscorer >0]) + length(Homescorer[Homescorer <0])
 
     text(x = 52.5, y= 75,
          labels = paste("<",matchtype,">\n", Hometeam, Homescore,"-", 
