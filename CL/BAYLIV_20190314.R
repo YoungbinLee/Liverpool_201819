@@ -20,7 +20,7 @@ Football_result(
     Hometeam = Hometeam, Awayteam = Awayteam,
     Home = "4-2-3-1",
     HomeColour = "red", Home2Colour = "red", 
-    HomeGKColour = ,
+    HomeGKColour = c("#078DA8"),
     HomeLineup = c(
         "Neuer",
         "Alaba", "Hummels", "Süle", "Rafina",
