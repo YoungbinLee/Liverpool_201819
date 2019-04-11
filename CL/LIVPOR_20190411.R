@@ -7,42 +7,41 @@ CairoFonts(
     bolditalic="FreeSans:style=BoldOblique"
 )
 
-Hometeam = 'Bayern Munich'
-Awayteam = 'Liverpool'
+Hometeam = 'Liverpool'
+Awayteam = 'FC Porto'
 
-CairoPDF(file = paste("CL/Champions League Round of 16 2nd leg ",
+CairoPDF(file = paste("CL/Champions League Quarter Finals 1st leg ",
                       Hometeam, " vs ", Awayteam, 
                       ".pdf", sep=""),
          width = 10, height = 8)
 
 Football_result(
-    matchtype = paste("2018/19 CHAMPIONS LEAGUE", "Round of 16 2nd leg", sep=" "),
+    matchtype = paste("2018/19 Champions League", "Quarter Finals 1st leg", sep=" "),
     Hometeam = Hometeam, Awayteam = Awayteam,
-    Home = "4-2-3-1",
+    
+    Home = "4-3-3",
     HomeColour = "red", Home2Colour = "red", 
-    HomeGKColour = c("#078DA8"),
+    HomeGKColour = c("#00FF00"),
     HomeLineup = c(
-        "Neuer",
-        "Alaba", "Hummels", "Süle", "Rafina",
-        "Javi Martínez", "Thiago Alcántara",
-        "Gnabry", "Rodríguez", "Ribéry",
-        "Lewandowski"
-    )
-    ,
-    HomeSub = c("Goretzka 72'", 62, "Renato Sanches 79'", 92),
-   
-    Away = "4-3-3",
-    AwayColour = "#D9D9D9", Away2Colour = "#999999",
-    AwayGKColour = "#00FF00",
-    AwayLineup = c(
         "Alisson",
-        "Robertson", "Matip", "van Dijk", "Alexander-Arnold",
-        "Wijnaldum","Henderson","Milner",
-        "Mané","Firmino","Salah"
-    )
-    ,
-    AwaySub = c("Fabinho 13'", 72, "Lallana 87'", 82, "Origi 83'", 102),
-    Awayscorer = c(4, 9, 9, -3)
+        "Alexander-Arnold", "Lovren", "van Dijk", "Milner",
+        "Henderson", "Fabinho", "Keita",
+        "Salah", "Firmino", "Mané"
+    ),
+    HomeSub = c("Sturridge 82'", 102, "Origi 73'", 112),
+    Homescorer = c(10, 8),
+    
+    Away = "4-4-2",
+    AwayColour = "#FFFFFF", Away2Colour = "#0000FF",
+    AwayGKColour = "#999999",
+    AwayLineup = c(
+        "Casillas",
+        "Alex Telles", "E. Militão", "Felipe", "Maxi",
+        "Otãvio", "Oliver", "Danilo", "Jesus C.",
+        "Soares", "Marega"
+    ),
+    AwaySub = c("Andrade dos Santos 77'", 52, 
+                "Almeida Costa 73'", 62, "Brahimi 62'", 102)
 )
 
 dev.off()
