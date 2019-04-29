@@ -291,7 +291,7 @@ Football_result <- function(matchtype=NULL,
                                     Home.y[idx] - 4)
                     }
                 }
-            }else if(idx < 120){ # substitution's goal
+            }else{ # substitution's goal
                 if(scorertable[[1]][i,]$Goal > 0){
                     for(j in 1:scorertable[[1]][i,]$Goal){
                         Ball <- blackBall
@@ -321,46 +321,10 @@ Football_result <- function(matchtype=NULL,
                         scorer.name <- HomeSub[which(HomeSub == idx)-1]
                         ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
-                                    Home.x[(idx-2)/10] + ball.position + 1*(k-1), 
-                                    Home.y[(idx-2)/10] - 9,
-                                    Home.x[(idx-2)/10] + ball.position + 2 + 1*(k-1),
-                                    Home.y[(idx-2)/10] - 7)
-                    }
-                }
-            }else{
-                if(scorertable[[1]][i,]$Goal > 0){
-                    for(j in 1:scorertable[[1]][i,]$Goal){
-                        Ball <- blackBall
-                        scorer.name <- HomeSub[which(HomeSub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.4 + 1
-                        rasterImage(Ball, 
-                                    Home.x[round((idx-2)/100,0)] + ball.position + 1*(j-1), 
-                                    Home.y[round((idx-2)/100,0)] - 12,
-                                    Home.x[round((idx-2)/100,0)] + ball.position + 2 + 1*(j-1),
-                                    Home.y[round((idx-2)/100,0)] - 10)
-                    }
-                    if(scorertable[[1]][i,]$OG >0){
-                        for(k in 1:scorertable[[1]][i,]$OG){
-                            Ball <- redball
-                            scorer.name <- HomeSub[which(HomeSub == idx)-1]
-                            ball.position <- nchar(scorer.name)*0.4 + 1
-                            rasterImage(Ball, 
-                                        Home.x[round((idx-2)/100,0)] + ball.position + 1*(j+k-1), 
-                                        Home.y[round((idx-2)/100,0)] - 12,
-                                        Home.x[round((idx-2)/100,0)] + ball.position + 2 + 1*(j+k-1),
-                                        Home.y[round((idx-2)/100,0)] - 10)
-                        }
-                    }
-                }else{
-                    for(k in 1:scorertable[[1]][i,]$OG){
-                        Ball <- redBall
-                        scorer.name <- HomeSub[which(HomeSub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.4 + 1
-                        rasterImage(Ball, 
-                                    Home.x[round((idx-2)/100,0)] + ball.position + 1*(k-1), 
-                                    Home.y[round((idx-2)/100,0)] - 12,
-                                    Home.x[round((idx-2)/100,0)] + ball.position + 2 + 1*(k-1),
-                                    Home.y[round((idx-2)/100,0)] - 10)
+                                    Home.x[idx] + ball.position + 1*(k-1), 
+                                    Home.y[idx] - 9,
+                                    Home.x[idx] + ball.position + 2 + 1*(k-1),
+                                    Home.y[idx] - 7)
                     }
                 }
             }
@@ -408,7 +372,7 @@ Football_result <- function(matchtype=NULL,
                                     Away.y[idx] - 4)
                     }
                 }
-            }else if(idx < 120){ # substitution's goal
+            }else{ # substitution's goal
                 if(scorertable[[2]][i,]$Goal > 0){
                     for(j in 1:scorertable[[2]][i,]$Goal){
                         Ball <- blackBall
@@ -438,46 +402,10 @@ Football_result <- function(matchtype=NULL,
                         scorer.name <- AwaySub[which(AwaySub == idx)-1]
                         ball.position <- nchar(scorer.name)*0.4 + 1
                         rasterImage(Ball, 
-                                    Away.x[(idx-2)/10] + ball.position + 1*(k-1), 
-                                    Away.y[(idx-2)/10] - 9,
-                                    Away.x[(idx-2)/10] + ball.position + 2 + 1*(k-1),
-                                    Away.y[(idx-2)/10] - 7)
-                    }
-                }
-            }else{
-                if(scorertable[[2]][i,]$Goal > 0){
-                    for(j in 1:scorertable[[2]][i,]$Goal){
-                        Ball <- blackBall
-                        scorer.name <- AwaySub[which(AwaySub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.4 + 1
-                        rasterImage(Ball, 
-                                    Away.x[round((idx-2)/100,0)] + ball.position + 1*(j-1), 
-                                    Away.y[round((idx-2)/100,0)] - 12,
-                                    Away.x[round((idx-2)/100,0)] + ball.position + 2 + 1*(j-1),
-                                    Away.y[round((idx-2)/100,0)] - 10)
-                    }
-                    if(scorertable[[2]][i,]$OG >0){
-                        for(k in 1:scorertable[[2]][i,]$OG){
-                            Ball <- redBall
-                            scorer.name <- AwaySub[which(AwaySub == idx)-1]
-                            ball.position <- nchar(scorer.name)*0.4 + 1
-                            rasterImage(Ball, 
-                                        Away.x[round((idx-2)/100,0)] + ball.position + 1*(j+k-1), 
-                                        Away.y[round((idx-2)/100,0)] - 12,
-                                        Away.x[round((idx-2)/100,0)] + ball.position + 2 + 1*(j+k-1),
-                                        Away.y[round((idx-2)/100,0)] - 10)
-                        }
-                    }
-                }else{
-                    for(k in 1:scorertable[[2]][i,]$OG){
-                        Ball <- redBall
-                        scorer.name <- AwaySub[which(AwaySub == idx)-1]
-                        ball.position <- nchar(scorer.name)*0.4 + 1
-                        rasterImage(Ball, 
-                                    Away.x[round((idx-2)/100,0)] + ball.position + 1*(k-1), 
-                                    Away.y[round((idx-2)/100,0)] - 12,
-                                    Away.x[round((idx-2)/100,0)] + ball.position + 2 + 1*(k-1),
-                                    Away.y[round((idx-2)/100,0)] - 10)
+                                    Away.x[idx] + ball.position + 1*(k-1), 
+                                    Away.y[idx] - 9,
+                                    Away.x[idx] + ball.position + 2 + 1*(k-1),
+                                    Away.y[idx] - 7)
                     }
                 }
             }
