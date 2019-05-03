@@ -199,8 +199,8 @@ Football_result <- function(matchtype=NULL,
     
     
     ## Indicate Scorer
-    blackBall <- readPNG("/Users/youngbin/Desktop/R/Liverpool_201819/ball-icon-png-4636.png")
-    redBall <- readPNG("/Users/youngbin/Desktop/R/Liverpool_201819/owngoal.png")
+    blackBall <- readPNG("C:/Users/Youngbin/Documents/Liverpool_201819/ball-icon-png-4636.png")
+    redBall <- readPNG("C:/Users/Youngbin/Documents/Liverpool_201819/owngoal.png")
     
     ## Home Scorer indexing
     if(!is.null(Homescorer)){
