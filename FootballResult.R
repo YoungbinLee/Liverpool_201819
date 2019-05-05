@@ -91,8 +91,11 @@ Football_result <- function(matchtype=NULL,
     }else if(Home == "4-1-2-1-2"){
         Home.x <- c(8,20,20,20,20,26,33,33,39,47,47)
         Home.y <- c(34,10,26,42,58,34,10,58,34,22,46)
+    }else if(Home == "5-4-1"){
+        Home.x <- c(8,20,20,20,20,20,33,33,33,33,46)
+        Home.y <- c(34,6,18,34,50,62,10,26,42,58,34)
     }
-    
+     
     points(x = Home.x[1], y = Home.y[1], 
            pch = 21, bg = HomeGKColour, col = "gray20", cex = 3.7, lwd = 2)
     points(x = Home.x[-1], y = Home.y[-1], 
@@ -134,7 +137,11 @@ Football_result <- function(matchtype=NULL,
     }else if(Away == "4-1-2-1-2"){
         Away.x <- c(97,85,85,85,85,79,72,72,66,59,59)
         Away.y <- c(34,10,26,42,58,34,10,58,34,22,46)
+    }else if (Away == "5-4-1"){
+        Away.x <- c(97,85,85,85,85,85,72,72,72,72,59)
+        Away.y <- c(34,6,18,34,50,62,10,26,42,58,34)
     }
+
     ## plot points
     points(x = Away.x[1], y = Away.y[1], 
            pch = 21, bg = AwayGKColour, col = "gray20", cex = 3.7, lwd = 2)
@@ -199,8 +206,8 @@ Football_result <- function(matchtype=NULL,
     
     
     ## Indicate Scorer
-    blackBall <- readPNG("C:/Users/Youngbin/Documents/Liverpool_201819/ball-icon-png-4636.png")
-    redBall <- readPNG("C:/Users/Youngbin/Documents/Liverpool_201819/owngoal.png")
+    blackBall <- readPNG("C:/Users/YoungbinLee/Documents/Liverpool_201819/ball-icon-png-4636.png")
+    redBall <- readPNG("C:/Users/YoungbinLee/Documents/Liverpool_201819/owngoal.png")
     
     ## Home Scorer indexing
     if(!is.null(Homescorer)){

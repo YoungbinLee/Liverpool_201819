@@ -1,4 +1,3 @@
-
 source("C:/Users/Youngbin/Documents/Liverpool_201819/FootballResult.R")
 
 Hometeam = 'Barcelona'
