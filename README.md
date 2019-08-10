@@ -1,5 +1,5 @@
-# Liverpool FC's Football results in 2018/19 season with R
+# Liverpool FC's Football results with R
 
 Main function is FootballResult.R
 
-**WARNING**: Be aware of the working directory when using these files
+**WARNING**: Be aware of the working directory when using uploaded files
