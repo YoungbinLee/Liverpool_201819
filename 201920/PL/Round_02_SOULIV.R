@@ -14,13 +14,13 @@ Football_result(
     matchtype = paste("2019/20 PREMIER LEAGUE ROUND", No_round, sep=" "),
     Hometeam = Hometeam, Awayteam = Awayteam,
     
-    Home = "4-4-2",
+    Home = "3-5-2",
     HomeColour = "#FF0000", Home2Colour = "#000000",
     HomeGKColour = "#98F5FF",
     HomeLineup = c(
         "Gunn",
-        "Bednarek", "Yoshida", "Vestergaard", "Valery",
-        "Ward-Prowse", "Romeu", "Højbjerg", "Bertrand",
+        "Bednarek", "Yoshida", "Vestergaard",
+        "Valery", "Ward-Prowse", "Romeu", "Højbjerg", "Bertrand",
         "Adams", "Redmond"
     ),
     HomeSub = c("Ings 64'", 72, "Djenepo 77'", 92, "Armstrong 68'", 102),
