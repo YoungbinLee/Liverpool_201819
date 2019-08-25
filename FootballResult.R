@@ -94,8 +94,10 @@ Football_result <- function(matchtype=NULL,
     }else if(Home == "5-4-1"){
         Home.x <- c(8,20,20,20,20,20,33,33,33,33,46)
         Home.y <- c(34,6,18,34,50,62,10,26,42,58,34)
+    }else if(Home == "4-3-1-2"){
+        Home.x <- c(8,20,20,20,20,30,30,30,38,46,46)
+        Home.y <- c(34,10,26,42,58,18,34,50,34,22,46)
     }
-     
     points(x = Home.x[1], y = Home.y[1], 
            pch = 21, bg = HomeGKColour, col = "gray20", cex = 3.7, lwd = 2)
     points(x = Home.x[-1], y = Home.y[-1], 
@@ -140,6 +142,9 @@ Football_result <- function(matchtype=NULL,
     }else if (Away == "5-4-1"){
         Away.x <- c(97,85,85,85,85,85,72,72,72,72,59)
         Away.y <- c(34,6,18,34,50,62,10,26,42,58,34)
+    }else if(Away == "4-3-1-2"){
+        Away.x <- c(97,85,85,85,85,75,75,75,66,59,59)
+        Away.y <- c(34,10,26,42,58,18,34,50,34,22,46)
     }
 
     ## plot points
